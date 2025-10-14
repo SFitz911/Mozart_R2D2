@@ -1,0 +1,12 @@
+[Unit]
+Description=Mozart_R2D2 FastAPI Service
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Mozart_R2D2
+ExecStart=/home/ubuntu/Mozart_R2D2/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
