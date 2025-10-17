@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.openapi.docs import get_swagger_ui_html
+from pathlib import Path
 
 app = FastAPI(
     title="Mozart_R2D2 API",
@@ -15,8 +16,9 @@ app = FastAPI(
 def root():
     return {"message": "Mozart_R2D2 FastAPI is running!"}
 
-# Serve /static so we can host our custom swagger CSS
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# Serve /static so we can host our custom swagger CSS (use absolute path)
+static_dir = Path(__file__).resolve().parent.parent / "static"
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 
 # Custom dark-themed Swagger UI
 @app.get("/docs", include_in_schema=False)
