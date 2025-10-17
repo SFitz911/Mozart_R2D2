@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  agent:
+    image: "${IMAGE_NAME}"
+    env_file:
+      - .env
+    environment:
+      - AGENT_API_KEY=${AGENT_API_KEY}
+      - AGENT_WORKDIR=${AGENT_WORKDIR}
+    volumes:
+      - ./agent_data:${AGENT_WORKDIR}
+    ports:
+      - "${AGENT_PORT}:${AGENT_PORT}"
+    restart: unless-stopped
+    # For GPU-enabled hosts, bootstrap script may generate a docker-compose.generated.yml with device_requests
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:${CADDY_DATA_DIR}
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    depends_on:
+      - agent
+
+volumes:
+  caddy_data:
+  agent_data:

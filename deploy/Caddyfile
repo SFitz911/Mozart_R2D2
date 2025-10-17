@@ -1,0 +1,11 @@
+{$DOMAIN} {
+    reverse_proxy agent:${AGENT_PORT}
+    tls {
+        # Caddy automatically obtains certs; add email if you want:
+        #   email you@example.com
+    }
+    log {
+        output stdout
+        level INFO
+    }
+}
