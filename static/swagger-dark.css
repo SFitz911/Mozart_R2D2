@@ -5,46 +5,102 @@
 
 /* 2) Dark theme overrides */
 :root {
-  --bg: #0b0f14;
-  --panel: #111827;
-  --panel-2: #0f172a;
-  --border: #1f2937;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #22d3ee;   /* cyan-ish accent */
-  --green: #10b981;    /* success */
-  --red: #ef4444;      /* errors */
+    --bg: #0b0f14;
+    --panel: #111827;
+    --panel-2: #0f172a;
+    --border: #1f2937;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #22d3ee;
+    /* cyan-ish accent */
+    --green: #10b981;
+    /* success */
+    --red: #ef4444;
+    /* errors */
 }
 
-html, body { background: var(--bg) !important; }
-.swagger-ui { color: var(--text); }
-.swagger-ui .topbar { background: var(--bg) !important; border-bottom: 1px solid var(--border); }
-.swagger-ui .topbar a, .swagger-ui .topbar a span { color: var(--text) !important; }
-.swagger-ui .info .title, .swagger-ui .info .base-url, .swagger-ui .markdown p { color: var(--text) !important; }
+html,
+body {
+    background: var(--bg) !important;
+}
+
+.swagger-ui {
+    color: var(--text);
+}
+
+.swagger-ui .topbar {
+    background: var(--bg) !important;
+    border-bottom: 1px solid var(--border);
+}
+
+.swagger-ui .topbar a,
+.swagger-ui .topbar a span {
+    color: var(--text) !important;
+}
+
+.swagger-ui .info .title,
+.swagger-ui .info .base-url,
+.swagger-ui .markdown p {
+    color: var(--text) !important;
+}
+
 .swagger-ui .scheme-container,
 .swagger-ui .opblock,
 .swagger-ui .models,
-.swagger-ui .model-box { background: var(--panel) !important; border-color: var(--border) !important; }
+.swagger-ui .model-box {
+    background: var(--panel) !important;
+    border-color: var(--border) !important;
+}
 
 .swagger-ui .opblock-tag.no-desc span,
 .swagger-ui .opblock .opblock-summary-description,
 .swagger-ui .opblock-description-wrapper p,
 .swagger-ui .model .property .prop-type,
-.swagger-ui .tab li a { color: var(--muted) !important; }
-
-.swagger-ui .btn { background: var(--panel-2) !important; border-color: var(--border) !important; color: var(--text) !important; }
-.swagger-ui .btn.execute { background: var(--accent) !important; color: #000 !important; border-color: var(--accent) !important; }
-
-.swagger-ui input, .swagger-ui select, .swagger-ui textarea {
-  background: var(--panel-2) !important;
-  color: var(--text) !important;
-  border-color: var(--border) !important;
+.swagger-ui .tab li a {
+    color: var(--muted) !important;
 }
 
-.swagger-ui .responses-table td, .swagger-ui .responses-table th { border-color: var(--border) !important; }
-.swagger-ui .response-col_status { color: var(--green) !important; }
-.swagger-ui .response-col_description { color: var(--text) !important; }
+.swagger-ui .btn {
+    background: var(--panel-2) !important;
+    border-color: var(--border) !important;
+    color: var(--text) !important;
+}
 
-.swagger-ui .opblock.opblock-post .opblock-summary-method { background: var(--green) !important; }
-.swagger-ui .opblock.opblock-get .opblock-summary-method { background: var(--accent) !important; }
-.swagger-ui .opblock.opblock-delete .opblock-summary-method { background: var(--red) !important; }
+.swagger-ui .btn.execute {
+    background: var(--accent) !important;
+    color: #000 !important;
+    border-color: var(--accent) !important;
+}
+
+.swagger-ui input,
+.swagger-ui select,
+.swagger-ui textarea {
+    background: var(--panel-2) !important;
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+}
+
+.swagger-ui .responses-table td,
+.swagger-ui .responses-table th {
+    border-color: var(--border) !important;
+}
+
+.swagger-ui .response-col_status {
+    color: var(--green) !important;
+}
+
+.swagger-ui .response-col_description {
+    color: var(--text) !important;
+}
+
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+    background: var(--green) !important;
+}
+
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+    background: var(--accent) !important;
+}
+
+.swagger-ui .opblock.opblock-delete .opblock-summary-method {
+    background: var(--red) !important;
+}
