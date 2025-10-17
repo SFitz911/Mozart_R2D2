@@ -1,3 +1,11 @@
 # Add Python dependencies here, e.g.:
 # fastapi
 # streamlit
+fastapi>=0.95.0
+uvicorn[standard]>=0.20.0
+requests
+pytest
+coverage
+black
+isort
+flake8
