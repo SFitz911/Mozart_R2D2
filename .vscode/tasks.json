@@ -1,0 +1,38 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start SSH Tunnel for DeepSeek",
+            "type": "shell",
+            "command": "ssh -p 15407 root@148.135.185.20 -L 7860:localhost:7860",
+            "problemMatcher": [],
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Relaunch DeepSeek on Remote",
+            "type": "shell",
+            "command": "ssh -p 15407 root@148.135.185.20 '/root/Mozart_R2D2/deploy/deepseek_source/start_deepseek.sh'",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        },
+        {
+            "label": "Check DeepSeek Log",
+            "type": "shell",
+            "command": "ssh -p 15407 root@148.135.185.20 'tail -n 100 /tmp/deepseek_gradio.log'",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}
