@@ -6,7 +6,7 @@
         {
             "label": "Start SSH Tunnel for DeepSeek",
             "type": "shell",
-            "command": "ssh -p 15407 root@148.135.185.20 -L 7860:localhost:7860",
+            "command": "ssh -p 40393 root@70.49.11.32 -L 8000:localhost:8000",
             "problemMatcher": [],
             "isBackground": true,
             "presentation": {
@@ -17,7 +17,7 @@
         {
             "label": "Relaunch DeepSeek on Remote",
             "type": "shell",
-            "command": "ssh -p 15407 root@148.135.185.20 '/root/Mozart_R2D2/deploy/deepseek_source/start_deepseek.sh'",
+            "command": "ssh -p 40393 root@70.49.11.32 'cd Mozart_R2D2/deploy && docker compose -f docker-compose.generated.yml restart agent'",
             "problemMatcher": [],
             "presentation": {
                 "reveal": "always",
@@ -27,7 +27,7 @@
         {
             "label": "Check DeepSeek Log",
             "type": "shell",
-            "command": "ssh -p 15407 root@148.135.185.20 'tail -n 100 /tmp/deepseek_gradio.log'",
+            "command": "ssh -p 40393 root@70.49.11.32 'docker logs deploy-agent-1'",
             "problemMatcher": [],
             "presentation": {
                 "reveal": "always",
