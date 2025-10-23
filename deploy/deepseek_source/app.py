@@ -37,5 +37,5 @@ iface = gr.Interface(
 )
 
 if __name__ == "__main__":
-    logger.info("Starting Gradio app on 0.0.0.0:7860")
-    iface.launch(server_name="0.0.0.0", server_port=7860)
+    logger.info("Starting Gradio app on 0.0.0.0:8000")
+    iface.launch(server_name="0.0.0.0", server_port=8000)
