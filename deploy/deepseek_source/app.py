@@ -1,5 +1,6 @@
 import gradio as gr
 import logging
+from transformers import pipeline
 
 # Setup logging
 logging.basicConfig(
@@ -8,21 +9,31 @@ logging.basicConfig(
 )
 logger = logging.getLogger("deepseek_gradio")
 
-def safe_generate(*args, **kwargs):
+# Load the model
+logger.info("Loading DeepSeek Coder model...")
+generator = pipeline("text-generation", model="deepseek-ai/deepseek-coder-1.3b-instruct", device_map="auto")
+logger.info("Model loaded successfully.")
+
+def safe_generate(prompt):
     try:
-        # Replace with your actual model inference code
-        logger.info("Model inference called with args: %s, kwargs: %s", args, kwargs)
-        return "Hello from DeepSeek!"
+        logger.info("Generating code for prompt: %s", prompt)
+        # Generate code
+        outputs = generator(prompt, max_length=512, num_return_sequences=1, temperature=0.7)
+        generated_text = outputs[0]['generated_text']
+        # Remove the prompt from the output if it's included
+        if generated_text.startswith(prompt):
+            generated_text = generated_text[len(prompt):].strip()
+        return generated_text
     except Exception as e:
         logger.error(f"Error during inference: {e}", exc_info=True)
         return f"Error: {e}"
 
 iface = gr.Interface(
     fn=safe_generate,
-    inputs=[gr.Textbox(label="Input")],
-    outputs=[gr.Textbox(label="Output")],
-    title="DeepSeek Demo",
-    description="A demo Gradio app with error handling and logging."
+    inputs=[gr.Textbox(label="Code Prompt", placeholder="Enter your code generation prompt here...")],
+    outputs=[gr.Textbox(label="Generated Code")],
+    title="DeepSeek Coder Demo",
+    description="Generate code using DeepSeek Coder model."
 )
 
 if __name__ == "__main__":
