@@ -1,4 +1,3 @@
-
 # Mozart_R2D2
 
 **Purpose:**
@@ -48,6 +47,34 @@ After running above, verify Python and venv:
 source .venv/bin/activate
 python --version
 ```
+
+## DeepSeek Coder Setup
+
+For running the cloud-based DeepSeek Coder AI assistant:
+
+1. **On a Vast.ai GPU instance** (Ubuntu 22.04, with at least 8GB RAM and a GPU like RTX 3060 or better for performance):
+   ```bash
+   git clone https://github.com/SFitz911/Mozart_R2D2.git
+   cd Mozart_R2D2/deploy
+   ```
+
+2. **Bootstrap the DeepSeek environment** (installs Docker, builds the image with the model):
+   ```bash
+   bash bootstrap_deepseek.sh
+   ```
+   This may take 10-20 minutes to download the model on first run.
+
+3. **Start the Gradio UI**:
+   - Use the VS Code tasks: "Start SSH Tunnel for DeepSeek" and "Relaunch DeepSeek on Remote".
+   - Access at `http://localhost:7860` (tunneled from the cloud instance).
+
+4. **Use the interface**: Enter code prompts (e.g., "Write a Python function to reverse a string") to generate code.
+
+### Future: VS Code Integration
+The goal is to integrate this cloud-based DeepSeek Coder into VS Code for seamless development assistance. This may involve:
+- Exposing an API endpoint from the Gradio app.
+- Creating a VS Code extension to query the remote model.
+- Handling authentication and real-time communication.
 
 ## Repo Layout
 
